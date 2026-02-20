@@ -62,3 +62,15 @@ def safe_prompt_injection(user_input: str) -> str:
         sanitized = sanitized[:1000]
     
     return sanitized
+
+
+def generate_response(system_prompt, user_input):
+    # Vulnerable: user input overrides system instructions
+    full_prompt = f"{system_prompt}\nUser: {user_input}"
+    return call_llm(full_prompt)
+
+def call_llm(prompt):
+    return f"LLM Output: {prompt}"
+
+
+
