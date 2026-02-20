@@ -72,3 +72,8 @@ def test_model_dos(params: dict) -> dict:
     result['vulnerability'] = 'Model DoS'
     
     return result
+
+def process_prompt(prompt):
+    # Vulnerable: no input length restriction
+    heavy_operation = prompt * 1000000
+    return len(heavy_operation)
