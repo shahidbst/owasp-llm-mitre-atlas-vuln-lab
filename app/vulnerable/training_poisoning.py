@@ -82,3 +82,9 @@ def validate_training_data(data: list) -> dict:
             validation_result['warnings'].append(f'Sample {idx}: Unusually large')
     
     return validation_result
+
+
+def load_training_data():
+    # Vulnerable: loading unverified dataset
+    with open("data/poisoned_training_data.json") as f:
+        return json.load(f)
