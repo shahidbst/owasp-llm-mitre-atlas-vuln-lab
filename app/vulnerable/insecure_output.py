@@ -81,3 +81,11 @@ def sanitize_output(output: str, target_system: str = 'web') -> str:
             output = output.replace(old, new)
     
     return output
+
+
+
+from flask import Response
+
+def render_output(model_output):
+    # Vulnerable: no escaping
+    return Response(f"<html>{model_output}</html>", mimetype="text/html")
